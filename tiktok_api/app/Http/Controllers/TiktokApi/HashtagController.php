@@ -13,6 +13,7 @@ class HashtagController extends Controller
         $all_hashtag = Hashtags::all();
         return response()->json([
             'alert' => 200,
+            'data' => $all_hashtag,
         ]);
     }
 }
