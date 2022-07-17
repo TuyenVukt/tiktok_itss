@@ -45,4 +45,28 @@ class LikeCommentController extends Controller
         else return 0;
     }
 
+    public static function count_like_comment($id){
+        $count_like_cmt = DB::table('like_comments')->where('status', 1)->where('comment_id', $id)->count();
+        return $count_like_cmt; 
+    }
+
+
+    public static function count_like_reply($id){
+        $count_like_cmt = DB::table('like_comments')->where('status', 0)->where('reply_id', $id)->count();
+        return $count_like_cmt;
+    }
+
+    public function delete_like_cmt(Request $request){
+        DB::delete('delete from like_comments where user_id = ? and comment_id = ?',[$request->user_id, $request->comment_id]);
+        return response()->json([
+            'alert' => 200,
+        ]);
+    }
+
+    public function delete_like_rep(Request $request){
+        DB::delete('delete from like_comments where user_id = ? and reply_id = ?',[$request->user_id, $request->reply_id]);
+        return response()->json([
+            'alert' => 200,
+        ]);
+    }
 }
