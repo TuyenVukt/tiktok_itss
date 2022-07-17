@@ -23,4 +23,21 @@ class LikeVideoController extends Controller
         ]);
     }
 
+    public function check(Request $request){
+        if (DB::table('like_videos')->where('user_id', $request->user_id)->where('video_id', $request->video_id)->exists()) {
+            return response()->json(['alert' => 200]);
+        }
+        else return response()->json(['alert' => 401]);
+    }
+
+
+    public function countLike($id){
+        $countLike = DB::table('like_videos')->where('video_id', $id)->count();
+        return response()->json([
+            'alert' => 200,
+            'like' => $countLike,
+        ]);
+    }
+
+
 }
