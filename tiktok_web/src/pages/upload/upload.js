@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { onUpVideo } from "../../api/loadVideoByUserId";
-import { loadHashtag } from "../../api/hashtag";
 import Menu from "../../components/menu/menu";
 import VideoSnapshot from "video-snapshot";
+import { loadHashtag } from "../../api/hashtag";
 
 // import scss
 import "./upload.scss";
