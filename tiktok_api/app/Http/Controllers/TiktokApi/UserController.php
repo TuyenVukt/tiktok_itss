@@ -80,6 +80,7 @@ class UserController extends Controller
         ]);
     }
 
+
     // get data
     public function getData($id){
         $user = Users::find($id);
